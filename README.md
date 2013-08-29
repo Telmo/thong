@@ -1,6 +1,9 @@
 # Thong
 
-TODO: Write a gem description
+Thong is a tonge in cheeck reference to [coveralls](https://coveralls.io/). The purpose of thong is to provide similar
+capabilities to what [coveralls](https://coveralls.io/) provides for GitHub but being self hosted.
+
+I will try to make it as compatible with coveralls as possible.
 
 ## Installation
 
@@ -18,7 +21,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Nothing to use so far watch this space for updates!
 
 ## Contributing
 
