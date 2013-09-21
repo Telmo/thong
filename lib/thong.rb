@@ -1,6 +1,7 @@
 require 'colorize'
-require "thong/version"
 require 'simplecov'
+require "thong/version"
+require "thong/simplecov"
 
 module Thong
   extend self
