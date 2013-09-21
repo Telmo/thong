@@ -13,7 +13,7 @@ module Thong
     start! simplecov_settings, &block
   end
 
-  def setup
+  def setup!
    ::SimpleCov.formatter = Thong::SimpleCov::Formatter
    puts "[Thong] Setting up the SimpleCov formatter.".colorize(:green)
   end
