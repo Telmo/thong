@@ -10,7 +10,7 @@ module Thong
 
   def wear!(simplecov_setting=nil, &block)
     setup!
-    start! simplecov_settings, &block
+    start! simplecov_setting, &block
   end
 
   def setup!
