@@ -1,9 +1,9 @@
 # Thong
 
-Thong is a tonge in cheeck reference to [coveralls](https://coveralls.io/). The purpose of thong is to provide similar
-capabilities to what [coveralls](https://coveralls.io/) provides for GitHub but being self hosted.
+_Because sometimes you don't want to cover it all_
 
-I will try to make it as compatible with coveralls as possible.
+Thong is a tongue in cheek reference to [coveralls](https://coveralls.io/). The purpose of thong is to provide similar capabilities to what [coveralls](https://coveralls.io/) provides for GitHub but being self hosted.
+
 
 ## Installation
 
@@ -21,7 +21,13 @@ Or install it yourself as:
 
 ## Usage
 
-Nothing to use so far watch this space for updates!
+in your `spec_helper` add the following before requiring your application's code
+
+```
+require 'thong'
+Thong.wear!
+```
+That's it
 
 ## Contributing
 
