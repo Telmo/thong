@@ -1,3 +1,4 @@
+require 'colorize'
 require "thong/version"
 
 module Thong
