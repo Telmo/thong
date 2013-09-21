@@ -21,6 +21,7 @@ module Thong
 
   def start!(simplecov_setting = 'test_frameworks', &block)
     ::SimpleCov.add_filter 'vendor'
+    ::SimpleCov.add_filter 'spec'
 
     if simplecov_setting
       puts "[Thong] Using SimpleCov's '#{simplecov_setting}' settings.".colorize(:green)
