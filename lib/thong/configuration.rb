@@ -6,7 +6,10 @@ module Thong
       config = {
         :git => git,
       }
-      if yml = self.yaml_config
+
+      yml = self.yaml_config
+
+      if yml
         config[:configuratiom] = yml
         config[:thong_url] = yml.fetch(:thong_url) { "http://localhost:3000" }
       else
@@ -22,7 +25,7 @@ module Thong
     end
 
     def self.config_file
-      File.expand_path(File.join(Dir.pwd, ".thong.yml"))
+      p File.expand_path(File.join(Dir.pwd, ".thong.yml"))
     end
 
     def self.git

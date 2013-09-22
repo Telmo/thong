@@ -2,7 +2,6 @@ module Thong
   module SimpleCov
     class Formatter
       def format(result)
-        pp result
         source_files = []
         result.files.each { |file|
           filename = file.filename.gsub(::SimpleCov.root, '.')
@@ -19,14 +18,47 @@ module Thong
           :missed_lines => result.missed_lines,
           :command_name => result.command_name,
           :run_at => result.created_at,
+          :covered_files => source_files.size,
         }
-        color = global_coverage[:percent] < 85 ? "red" : "green"
-        puts "[Thong] #{result.command_name} Report generated at  #{result.created_at}".colorize(:green)
-        puts "- #{source_files.size} files analized".colorize(:white)
-        puts "- Coverage is at #{global_coverage[:percent]}%".colorize(color.to_sym)
-        puts "- #{result.covered_lines} lines covered by test.".colorize(:green)
-        puts "- #{result.missed_lines} lines not covered by test".colorize(:red)
+        display_results(global_coverage)
+
+        if ::Thong::API::CONFIG.fetch(:thong_url) { nil }
+          API.post_json "jobs", {:source_files => source_files, :test_framework => result.command_name.downcase, :run_at => result.created_at}
+        end
+
+        true
+
+      rescue Exception => e
+        display_error e
       end
+
+      def display_results(coverage)
+
+        if coverage[:percent] > 90
+          color = "green"
+        elsif coverage[:percent] > 80
+          color = "yellow"
+        else
+          color = "red"
+        end
+
+        puts "[Thong] #{coverage[:command_name]} Report generated at  #{coverage[:run_at]}".colorize(:green)
+        puts "- #{coverage[:covered_files]} files analyzed".colorize(:white)
+        puts "- #{coverage[:covered_lines]} lines covered by tests.".colorize(:green)
+        puts "- #{coverage[:missed_lines]} lines not covered by tests".colorize(:red)
+        puts "- Coverage is at #{coverage[:percent]}%".colorize(color.to_sym)
+      end
+
+      def display_error(e)
+        puts "Thong encountered an exception:".colorize(:red)
+        puts e.class.to_s.colorize(:red)
+        puts e.message.colorize(:red)
+        if e.respond_to?(:response) && e.response
+          puts e.response.to_s.colorize(:red)
+        end
+        false
+      end
+
     end
   end
 end

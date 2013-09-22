@@ -1,14 +1,14 @@
 require 'colorize'
 require 'simplecov'
 require "thong/version"
-#require "thong/configuration"
+require "thong/configuration"
 require "thong/api"
 
 require "thong/simplecov"
 
 module Thong
   extend self
-
+  
   attr_accessor :adapter
 
   def wear!(simplecov_setting=nil, &block)
