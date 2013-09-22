@@ -20,6 +20,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'simplecov', ">= 0.7"
   gem.add_dependency 'colorize'
   gem.add_dependency 'rest-client'
+  gem.add_dependency 'multi_json'
 
   gem.add_development_dependency 'rspec'
   gem.add_development_dependency 'rake'
