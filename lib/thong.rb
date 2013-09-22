@@ -1,7 +1,7 @@
 require 'colorize'
 require 'simplecov'
 require "thong/version"
-require "thong/configuration"
+#require "thong/configuration"
 require "thong/api"
 
 require "thong/simplecov"
