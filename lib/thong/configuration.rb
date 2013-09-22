@@ -25,7 +25,7 @@ module Thong
     end
 
     def self.config_file
-      p File.expand_path(File.join(Dir.pwd, ".thong.yml"))
+       File.expand_path(File.join(Dir.pwd, ".thong.yml"))
     end
 
     def self.git
