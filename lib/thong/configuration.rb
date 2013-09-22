@@ -16,8 +16,8 @@ module Thong
     end
 
     def self.yaml_config
-      if self.configuration_file && File.exists?(self.configuration_file)
-        YAML::load_file(self.configuration_file)
+      if self.config_file && File.exists?(self.config_file)
+        YAML::load_file(self.config_file)
       end
     end
 
@@ -40,7 +40,7 @@ module Thong
       branch = `git branch`.split("\n").delete_if { |i| i[0] != "*" }
       git_hash[:branch] = [branch].flatten.first.gsub("* ","")
 
-      remote = nil
+      remotes = nil
       begin
         remotes = `git remote -v`.split(/\n/).map do |remote|
           splits = remote.split(" ").compact
@@ -54,6 +54,5 @@ module Thong
       git_hash
 
     end
-
   end
 end

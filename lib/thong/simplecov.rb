@@ -2,6 +2,7 @@ module Thong
   module SimpleCov
     class Formatter
       def format(result)
+        pp result
         source_files = []
         result.files.each { |file|
           filename = file.filename.gsub(::SimpleCov.root, '.')

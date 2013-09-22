@@ -1,9 +1,10 @@
 require 'colorize'
 require 'simplecov'
 require "thong/version"
-require "thong/simplecov"
 require "thong/configuration"
 require "thong/api"
+
+require "thong/simplecov"
 
 module Thong
   extend self
@@ -28,8 +29,10 @@ module Thong
     if simplecov_setting
       puts "[Thong] Using SimpleCov's '#{simplecov_setting}' settings.".colorize(:green)
       if block_given?
+        puts "block given"
         ::SimpleCov.start(simplecov_setting) { instance_eval &block }
       else
+        puts "regular run"
         ::SimpleCov.start(simplecov_setting)
       end
     elsif block_given?

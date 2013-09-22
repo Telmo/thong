@@ -13,6 +13,7 @@ module Thong
       disable_net_blockers!
       url = endpoint_to_url(endpoint)
       puts "[Thong] Submitting to #{ENDPOINT}".colorize(:cyan)
+      hash = hash.merge(CONFIG)
       response = RestClient.post(url, :json_file => hash_to_file(hash))
       response_hash = MultiJson.load(response.to_str)
       puts "[Thong] #{ response_hash['message'] }".colorize(:cyan)
@@ -48,6 +49,15 @@ module Thong
     def self.endpoint_to_url(endpoint)
       "#{ENDPOINT}/#{endpoint}"
     end
+
+		def self.hash_to_file(hash)
+			file = nil
+			Tempfile.open(['thong-upload', 'json']) do |tmpfile|
+				tmpfile.write(MultiJson.dump hash)
+				file = tmpfile
+			end
+			File.new(file.path, 'rb')
+		end
 
   end
 end
