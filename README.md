@@ -4,6 +4,15 @@ _Because sometimes you don't want to cover it all_
 
 Thong is a tongue in cheek reference to [coveralls](https://coveralls.io/). The purpose of thong is to provide similar capabilities to what [coveralls](https://coveralls.io/) provides for GitHub but being self hosted.
 
+## Disclaimer
+
+This is only the client side. It will currently report on the coverage for your code and if the .thong.yaml is present it will submit the report.
+
+However until I don't finish the server side its just a nice "Coverage Report".
+
+## TODO
+ - Document the Code
+ - Write RSpec .. aweful of me not to write those first :(
 
 ## Installation
 
